@@ -4,7 +4,7 @@ var { Server } = require('socket.io');
 var httpServer = createServer();
 var io = new Server(httpServer, {
   cors: {
-    origin: "*",
+    origin: "https://vanishchat-mk2ngqa1c-conor-bowles-projects.vercel.app",
     methods: "*"
   }
 });
@@ -36,4 +36,7 @@ io.on("connection", function(socket){
   })
 });
 
-httpServer.listen(3000);
+const PORT = process.env.PORT || 3000;
+httpServer.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
